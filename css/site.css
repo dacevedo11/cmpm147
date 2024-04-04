@@ -1,3 +1,5 @@
+/* Default Settings */ 
+
 h1, h2 {
   margin: 0;
   padding: 0;
@@ -7,9 +9,12 @@ h1, h2 {
 
 #content {
   width: calc(100% - 30px);
-  margin: 10px;080;
+  margin: 10px;
+}
+
+.selector {
   padding: 10px;
-  border: solid 1px #808;
+  border: solid 1px #DBAFA0;
   font-family: sans-serif;
 }
 
@@ -38,7 +43,8 @@ canvas {
 
 .fullscreen-box {
   display: flex;
-  justify-content: flex-end; /* Aligns the button to the right */
+  justify-content: flex-end;
+  /* Aligns the button to the right */
   margin-top: 0.25em;
 }
 
@@ -47,11 +53,15 @@ canvas {
 }
 
 body.is-fullscreen #canvas-container {
-  position: fixed; /* Use 'fixed' instead of 'absolute' to ensure it covers the entire screen */
+  position: fixed;
+  /* Use 'fixed' instead of 'absolute' to ensure it covers the entire screen */
   top: 0;
-  left: 0; /* Add 'left: 0' to align it properly to the top-left corner */
+  left: 0;
+  /* Add 'left: 0' to align it properly to the top-left corner */
   width: 100vw !important;
   height: 100vh !important;
-  margin: 0; /* Remove any default margins */
-  z-index: 1000; /* Ensure it's above other content */
+  margin: 0;
+  /* Remove any default margins */
+  z-index: 1000;
+  /* Ensure it's above other content */
 }
