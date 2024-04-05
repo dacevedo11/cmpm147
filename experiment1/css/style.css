@@ -1,11 +1,3 @@
-/* style.css */
-
-/* Set the canvas element to be the full size of the container */
-canvas {
-    width: 100%;
-    height: 100%;
-}
-
 /* Center the canvas element on the page */
 body {
     display: flex;
@@ -13,7 +5,25 @@ body {
     align-items: center;
 }
 
-#canvas-container {
-    width: 100%;
-    height: 600px;
+.minor-section {
+    padding: 10px;
+    border: solid 1px #A0A0A0;
+    border-radius: 10px;
+    background-color: rgb(225, 217, 205);
+    margin-bottom: 3px;
+}
+
+.glitch-wrapper {
+    display: flex;
+    align-items: center;
+}
+
+.glitch-output {
+    width: 500px;
+    font-family: fantasy;
+    border: thin solid gray;
+    padding: 1em;
+    margin: 1em;
+    box-shadow: 2px 2px 5px gray;
+    background: #ffe;
 }
