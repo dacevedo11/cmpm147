@@ -1,79 +1,67 @@
-// sketch.js - purpose and description here
-// Author: Your Name
-// Date:
+// Experiment 02 - Living Impressions
+// Author: Daniel Acevedo
+// Date:  4/15/2024
 
-// Here is how you might set up an OOP p5.js project
-// Note that p5.js looks for a file called sketch.js
-
-// Constants - User-servicable parts
-// In a longer project I like to put these in a separate file
-const VALUE1 = 1;
-const VALUE2 = 2;
-
-// Globals
-let myInstance;
-let canvasContainer;
-var centerHorz, centerVert;
-
-class MyClass {
-    constructor(param1, param2) {
-        this.property1 = param1;
-        this.property2 = param2;
-    }
-
-    myMethod() {
-        // code to run when method is called
-    }
-}
-
+// Kept resizeScreen() function from template
 function resizeScreen() {
-  centerHorz = canvasContainer.width() / 2; // Adjusted for drawing logic
-  centerVert = canvasContainer.height() / 2; // Adjusted for drawing logic
+  centerHorz = canvasContainer.width() / 2;
+  centerVert = canvasContainer.height() / 2;
   console.log("Resizing...");
   resizeCanvas(canvasContainer.width(), canvasContainer.height());
-  // redrawCanvas(); // Redraw everything based on new size
 }
 
-// setup() function is called once when the program starts
+// Listener for reimagine button. Borrowed from Wes. 
+$("#reimagine").click(function () {
+  seed++;
+});
+
+// ====================================================
+// Imported from Glitch.com
+
+let seed = 0;
+let cloudx = [];
+let cloudy = [];
+let numClouds = 50;
+
+const cloudSpeed = 0.25;
+const cloudColors = ["#BCAFDB", "#979DCC", "#A75B89", "#B9A8D2", "#F0C2E7", "#F1B5D9"];
+const skyColor = "#3852A0";
+
 function setup() {
-  // place our canvas, making it fit our container
   canvasContainer = $("#canvas-container");
   let canvas = createCanvas(canvasContainer.width(), canvasContainer.height());
   canvas.parent("canvas-container");
-  // resize canvas is the page is resized
-
-  // create an instance of the class
-  myInstance = new MyClass("VALUE1", "VALUE2");
-
-  $(window).resize(function() {
+  $(window).resize(function () {
     resizeScreen();
   });
   resizeScreen();
 }
 
-// draw() function is called repeatedly, it's the main animation loop
 function draw() {
-  background(220);    
-  // call a method on the instance
-  myInstance.myMethod();
+  randomSeed(seed);
+  background(skyColor);
 
-  // Set up rotation for the rectangle
-  push(); // Save the current drawing context
-  translate(centerHorz, centerVert); // Move the origin to the rectangle's center
-  rotate(frameCount / 100.0); // Rotate by frameCount to animate the rotation
-  fill(234, 31, 81);
-  noStroke();
-  rect(-125, -125, 250, 250); // Draw the rectangle centered on the new origin
-  pop(); // Restore the original drawing context
+  for (let i = 0; i < numClouds; i++) {
+      cloudx.push(random(0, width));
+      cloudy.push(random(50, height));
+    }
 
-  // The text is not affected by the translate and rotate
-  fill(255);
-  textStyle(BOLD);
-  textSize(140);
-  text("p5*", centerHorz - 105, centerVert + 40);
+  // Update and display clouds
+  for (let i = 0; i < numClouds; i++) {
+    cloudx[i] += cloudSpeed; // Update cloud position using constant speed
+    if (cloudx[i] > width + 100) { // Adjust the condition for cloud wrap-around
+      cloudx[i] = -100;
+      cloudy[i] = random(50, height / 2);
+    }
+    makeCloud(cloudx[i], cloudy[i]);
+  }
 }
 
-// mousePressed() function is called once after every time a mouse button is pressed
-function mousePressed() {
-    // code to run when mouse is pressed
+function makeCloud(x, y) {
+  let cloudColor = random(cloudColors);
+  fill(cloudColor);
+  noStroke();
+  ellipse(x, y, 70, 50);
+  ellipse(x + 10, y + 10, 70, 50);
+  ellipse(x - 20, y + 10, 70, 50);
 }
