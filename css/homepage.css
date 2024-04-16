@@ -19,11 +19,17 @@ h1{
   text-align: center;
 }
 
+.major-section {
+  border-radius: 10px;
+}
+
 .minor-section {
   background-color: #DBAFA0;
   padding: 10px 25px;
   margin-bottom: 10px;
   border: solid 2px black;
+  margin: 10px;
+  border-radius: 10px;
 }
 
 #bottom-half .minor-section {

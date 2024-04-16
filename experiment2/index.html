@@ -32,29 +32,48 @@
 					<button id="reimagine">Reimagine</button>
 					<button id="fullscreen">Fullscreen</button>
 				</div>
+				<p>Translated from <a href="https://pink-clouds.glitch.me">pink-clouds on glitch.com</a></p>
 			</div>
 
-			<div class="minor-section">
-				<h2>Description</h2>
-				<p>What are you trying to acomplish with this experiment?</p>
+			<div class="two-column">
+
+				<div class="minor-section">
+					<h2>Description</h2>
+					<p>My goal for this assignment was to create a procedurally-generated version of the below image using p5.js</p>
+					<div class="image-wrapper">
+						<img src="img/pink-clouds.jpg" alt="Pink Clouds">
+					</div>
+				</div>
+
+				<div class="minor-section">
+					<h2>Technical</h2>
+					<p>I created a function called makeCloud that takes three offset ellipses and combines them into a cloud. I also
+						took some of the colors used in the original image and created a color palette to use in the sketch. I added
+						these colors to an array, which is then passed to the makeCloud function to color the clouds by selecting a random
+						element fromn the array. Additionally, the draw function updates the x position of the cloud so that the clouds
+						will move across the screen. When a cloud reaches 100 pixels past the edge of the canvas, it is removed
+						from the array and a new cloud is added to the array and is placed 100 pixels off the left edge of the canvas,
+						where it will then move across the screen, repeating the process.</p>
+				</div>
+
 			</div>
 
-			<div class="minor-section">
-				<h2>Technical</h2>
-				<p>Describe in detail what you did technically and how it works?</p>
-			</div>
+			
+
+			
 
 			<div class="minor-section">
 				<h2>Reflection</h2>
-				<p>Each person that worked on the code should reflect on the process, the difficulties, and the
-					successes of the experiment.</p>
+				<p>This was my first time working with p5.js. I had to reference the p5.js documentation several times. I also 
+					kept the example project open in a separate tab to reference the code. Once I got the hang of it, it turned
+					out to be pretty fun. I originally just had one shade of pink for the clouds, but I decided to add more colors
+					by creating an array of strings for the hexcode colors.
+				</p>
 			</div>
 
 		</section>
 		<nav id="links" class="minor-section">
-			<ul>
-				<li><a href="../index.html">Home</a></li>
-			</ul>
+			<a href="../index.html">Go Back To Home</a>
 		</nav>
 	</main>
 </body>

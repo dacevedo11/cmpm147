@@ -11,9 +11,32 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    background-color: #A79277;
+    font-family: monospace;
+}
+
+#content{
+    background-color: #D1BB9E;
+    border: 1px solid black;
 }
 
 #canvas-container {
     width: 100%;
     height: 600px;
+    border: solid 1px black;
+    margin: auto;
+}
+
+.minor-section{
+    border: 1px solid black;
+    background-color: #EAD8C0;
+}
+
+h1, h2 {
+    padding: 10px;
+    text-align: center;
+}
+
+img{
+    border: 1px solid black;
 }
