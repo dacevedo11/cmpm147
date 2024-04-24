@@ -1,69 +1,87 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<!-- This title is used for tabs and bookmarks -->
-	<title>Experiment X - Subject/Topic</title>
-
-	<!-- Use UTF character set, a good idea with any webpage -->
+	<title>Experiment 3 - Alternate Worlds</title>
 	<meta charset="UTF-8" />
-	<!-- Set viewport so page remains consistently scaled w narrow devices -->
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-	<!-- Include CSS file, including a site-wide CSS and for this particular page -->
 	<link rel="stylesheet" type="text/css" href="../css/site.css">
 	<link rel="stylesheet" type="text/css" href="css/style.css">
-
-	<!-- Load jQuery library -->
 	<script src="https://code.jquery.com/jquery-3.7.1.min.js"
         integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
         crossorigin="anonymous"></script>
-	<!-- Load p5.js library -->
 	<script src="https://cdn.jsdelivr.net/npm/p5@1.9.2/lib/p5.js"></script>
-
-	<!-- Link to javascript files - DEFER waits until all elements are rendered -->
-    <script type="text/javascript" src="../js/site.js" DEFER></script>
-	<!-- Use me for a JavaScript OOP Project -->
-	<script type="text/javascript" src="./js/project.js" DEFER></script>
-	<!-- Use me for a p5.js project -->
-	<script type="text/javascript" src="./js/sketch.js" DEFER></script>
+	<script type="text/javascript" src="./js/p2_base.js" DEFER></script>
+	<script type="text/javascript" src="./js/p2_solution.js" DEFER></script>
 </head>
 <body>
-	<!-- Style this page by changing the CSS in ../css/site.css or css/experiment.css -->
 	<main id="content">
 		<section>
 
-			<h1>Experiment X - Subject/Topic</h1>
+			<h1>Experiment 3 - Alternate Worlds</h1>
 
 			<div class="minor-section">
-				<div id="canvas-container">
-					<!-- canvas will be added here -->
+				<div>
+					<button id="reseedButton">
+						reseed
+					  </button>
+					  <span id="seedReport"></span>
+					  <hr />
+					  <span id="canvasContainer" style="margin: 10px;"></span>
+					  <textarea cols="20" rows="20" id="asciiBox" style="opacity: 0.5; letter-spacing: 1ex; width: 320px; margin: 10px; font-family: monospace;"></textarea>
 				</div>
-                <div class="fullscreen-box">
-                    <button id="fullscreen">Fullscreen</button>
-                </div>
+
+				<p>Translated from <a href="https://autotile-fail.glitch.me/">autotile-fail.glitch.me</a></p>
 			</div>
 
-			<div class="minor-section">
-				<h2>Description</h2>
-				<p>What are you trying to acomplish with this experiment?</p>
-			</div>
+			<div class="two-column">
 
-			<div class="minor-section">
-				<h2>Technical</h2>
-				<p>Describe in detail what you did technically and how it works?</p>
+				<div class="minor-section">
+					<h2>Description</h2>
+					<p>The goal of this experiment was to create a grid that places tiles using autotile. Once the first one worked, we were supposed to 
+						create a second grid that was a dungeon if you created an overworld, or an overworld if you created a dungeon. Then, we were supposed to
+						add variety to make it more interesting and add some life to it, like animated tiles with moving water or such.
+					</p>
+				</div>
+	
+				<div class="minor-section">
+					<h2>Technical</h2>
+					<p>Technically, I just followed the slides. I experimented with different comnbinations of tiles and my goal was to create something
+						similar to the example we were given from Prof. Smith's glitch project. I used the number of rows and columns to determine the size
+						of the grid so that I could create the smaller "room" in the center of that. As for the other functions, I used ChatGPT to help me
+						because I was having trouble understanding the autotiling logic. I understood it in theory, but I was having trouble implementing it.
+ 					</p>
+				</div>
+
 			</div>
 
 			<div class="minor-section">
 				<h2>Reflection</h2>
-				<p>Each person that worked on the code should reflect on the process, the difficulties, and the successes of the experiment.</p>
+				<p>As I started to mention in the Technical section, I was having trouble with this assignment. I understand how the autotile works in theory,
+					kind of, I think. You take the tile, check the surrounding tiles and if the tile to any direction is not the same, then it is either a transition
+					or an edge. Like I said, I didn't really understand the code though. I tried using ChatGPT to explain the code it did provide me, and I'd keep 
+					following up with questions, but ultimately it doesn't really have the full picture of the assignment. Unfortunately, there also wasn't any example
+					provided on Wes's site this time. Being able to see what the final product should look like would have been helpful. Wes's examples have helped me before,
+					especially when I don't completely understand the hints or instructions. It's kind of like an "Oh, THAT'S that it meant" and I still learn from it. I also 
+					tried working backwards to try to solve the problem, and I even started over at one point. Unfortunately, I also have a lot going on right now. The time
+					I spent on this over the weekend made me push back another class's work, and I felt like I was starting to fall behind. I also had to write a gratitude letter
+					and bio for a scholarship that I was awarded from USC, and I was working with another instructor who was helping me review what I wrote. And finally, I also 
+					had to compltete a scholarship essay for ANOTHER SEPARATE scholarship, and also trying to figure out options for financing grad school. Since I'm a veteran
+					I have been using the GI Bill to cover my education, but technically there is a limit of 27k per year. Now at UCSC, that isn't a problem because of in state
+					tuition, but since USC is a private university, everyone pays the full tuition amount. Usually, this wouldn't be a problem either, because many private 
+					universities have the Yellow Ribbon Program, which is a program that allows the school to pay the difference between the GI Bill and the tuition. USC does
+					offer yellow ribbon scholarships, which are unlimited in number and amount at the undergraduate level, but at the graduate level, they are limited by 
+					department. The School of Cinematic Arts only has 3 scholarships available to it's graduate students, which is obviously not a lot, and there is no guarnauntee
+					that I will get one. So, I have been trying to figure out what to do if I don't get one. I have been looking at other scholarships, and other options for 
+					financing, but that's a whole other spiel and I think I've ranted on enough for now. Anyway, I did speak to Wes about turning this in late, but ultimately
+					I want to just get it done and not have to worry about it anymore, especially as we start focusing on the next project. I'm sure I won't get many points
+					(if any, but hope some) but I just want to get it out of the way so I don't fall behind. Worst case scenario, I switch to P/NP since I only needed one upper '
+					div elective to graduate and I still decided to take 3 of them (15 units) for fun. SO MUCH FUN :)
+				</p>
 			</div>
 
 		</section>
 		<nav id="links" class="minor-section">
-			<!-- Put link back to homepage here. -->
-            <ul>
-                <li><a href="../index.html">Home</a></li>
-            </ul>
+            <a href="../index.html">Go Back To Home</a>
 		</nav>
 	</main>
 </body>

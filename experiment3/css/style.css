@@ -11,9 +11,26 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    background-color: #F0EBE3;
+    font-family: monospace;
 }
 
 #canvas-container {
     width: 100%;
     height: 600px;
+}
+
+#content{
+    background-color: #F3D0D7;
+    border: solid 1px black;
+}
+
+h1, h2 {
+    text-align: center;
+    margin: 10px;
+}
+
+.minor-section {
+    background-color: #FFEFEF;
+    border: solid 1px black;
 }
