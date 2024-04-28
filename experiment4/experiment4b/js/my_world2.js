@@ -23,7 +23,7 @@ function p3_setup() {}
 let worldSeed
 
 let noiseScale;
-let timeScale = 0.005; // Adjust this value to control the speed of time-based changes
+let timeScale = 0.005;
 
 
 
@@ -54,30 +54,22 @@ function p3_drawBefore() {
 }
 
 function p3_drawTile(i, j) {
-  let randomNoiseScale = map(XXH.h32("tile:" + [i, j], worldSeed), 0, 4294967295, 0.5, 2.0); // Map the hash value to a range of noiseScale
+  let randomNoiseScale = map(XXH.h32("tile:" + [i, j], worldSeed), 0, 4294967295, 0.5, 2.0);
 
-  // Set stroke color to red
   stroke(255, 0, 0);
-  
-  // Set stroke weight (thickness) to 2 pixels
   strokeWeight(2);
 
-  // Calculate distance from the center of the grid
   let distanceFromCenter = dist(i, j, width / 2, height / 2);
 
-  // Map distance to a range for the horizontal and vertical offsets
   let xOffsetRange = map(distanceFromCenter, 0, dist(0, 0, width / 2, height / 2), -20, 20); // Adjust the range (5, 20) as needed
   let yOffsetRange = map(distanceFromCenter, 0, dist(0, 0, width / 2, height / 2), -20, 20); // Adjust the range (5, 20) as needed
   
-  // Calculate noise values based on tile position and time
   let noiseValueX = noise(i * randomNoiseScale, j * randomNoiseScale, frameCount * timeScale);
   let noiseValueY = noise(j * randomNoiseScale, i * randomNoiseScale, frameCount * timeScale);
 
-  // Map noise values to horizontal and vertical offsets within their respective ranges
   let xOffset = map(noiseValueX, 0, 1, -xOffsetRange, xOffsetRange);
   let yOffset = map(noiseValueY, 0, 1, -yOffsetRange, yOffsetRange);
   
-  // Apply horizontal and vertical offsets to tile position
   translate(xOffset, yOffset);
 
   if (XXH.h32("tile:" + [i, j], worldSeed) % 4 == 0) {
@@ -94,10 +86,10 @@ function p3_drawTile(i, j) {
 
     let n = clicks[[i, j]] | 0;
     if (n % 2 == 1) {
-      fill(255, 215, 0); // Set fill color to yellow gold
-      ellipse(0, 0, 20, 20); // Draw a circle for the coin
-      fill(255, 255, 0); // Set fill color to bright yellow
-      ellipse(0, 0, 14, 14); // Draw a smaller circle inside for shine effect
+      fill(255, 215, 0);
+      ellipse(0, 0, 20, 20);
+      fill(255, 255, 0);
+      ellipse(0, 0, 14, 14);
     }
 
     pop();

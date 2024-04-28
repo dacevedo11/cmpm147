@@ -22,8 +22,8 @@ let worldSeed
 
 let tileColors = {};
 
-let noiseScale = 1; // Adjust this value to control the frequency of the noise
-let timeScale = 0.005; // Adjust this value to control the speed of time-based changes
+let noiseScale = 1;
+let timeScale = 0.005;
 
 
 
@@ -54,19 +54,14 @@ function p3_drawBefore() {}
 function p3_drawTile(i, j) {
   noStroke();
 
-  // Calculate distance from the center of the grid
   let distanceFromCenter = dist(i, j, width / 2, height / 2);
 
-  // Map distance to a range for the vertical offset
-  let yOffsetRange = map(distanceFromCenter, 0, dist(0, 0, width / 2, height / 2), 5, 20); // Adjust the range (5, 20) as needed
+  let yOffsetRange = map(distanceFromCenter, 0, dist(0, 0, width / 2, height / 2), 5, 20);
   
-  // Calculate noise value based on tile position and time
   let noiseValue = noise(i * noiseScale, j * noiseScale, frameCount * timeScale);
 
-  // Map noise value to vertical offset within the range
   let yOffset = map(noiseValue, 0, 1, -yOffsetRange, yOffsetRange);
   
-  // Apply vertical offset to tile position
   translate(0, yOffset);
 
   if (XXH.h32("tile:" + [i, j], worldSeed) % 4 == 0) {
