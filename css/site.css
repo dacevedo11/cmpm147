@@ -84,10 +84,11 @@ body.is-fullscreen #canvas-container {
 }
 
 #links a {
-  background-color: #f44336;
-  color: white;
+  background-color: yellow;
+  color: black;
   padding: 14px 25px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
+  border: solid 1px black;
 }

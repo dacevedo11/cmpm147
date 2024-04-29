@@ -1,18 +1,38 @@
+/* style.css */
+
+/* Set the canvas element to be the full size of the container */
+canvas {
+    width: 100%;
+    height: 100%;
+}
+
 /* Center the canvas element on the page */
 body {
     display: flex;
     justify-content: center;
     align-items: center;
+    background-color: #2b2d42;
+    font-family: monospace;
 }
 
-.minor-section {
+#content{
+    background-color: #8d99ae;
+    border: 1px solid black;
+}
+
+
+
+.minor-section{
+    border: 1px solid black;
+    background-color: #edf2f4;
+}
+
+h1, h2 {
     padding: 10px;
-    border: solid 1px black;
-    border-radius: 10px;
-    background-color: rgb(225, 217, 205);
-    margin-bottom: 3px;
+    text-align: center;
 }
 
+/* Center the canvas element on the page */
 .glitch-wrapper {
     display: flex;
     align-items: center;
@@ -20,10 +40,10 @@ body {
 
 .glitch-output {
     width: 500px;
-    font-family: fantasy;
     border: thin solid gray;
     padding: 1em;
     margin: 1em;
     box-shadow: 2px 2px 5px gray;
     background: #ffe;
+    border: solid 1px black;
 }
