@@ -7,15 +7,13 @@
 // ========================
 
 var s1 = function (p) {
-    "use strict";
-
     /* global p5, XXH */
     /* exported preload, setup, draw, mouseClicked */
 
     // Project base code provided by {amsmith,ikarth}@ucsc.edu
 
-    let tile_width_step_main; // A width step is half a tile's width
-    let tile_height_step_main; // A height step is half a tile's height
+    let tile_width_step_main;
+    let tile_height_step_main;
 
     // Global variables. These will mostly be overwritten in setup().
     let tile_rows, tile_columns;
@@ -70,7 +68,7 @@ var s1 = function (p) {
     }
 
     p.setup = function () {
-        let canvas = p.createCanvas(400, 300);
+        let canvas = p.createCanvas(800, 400);
         canvas.parent("c1");
 
         camera_offset = new p5.Vector(-p.width / 2, p.height / 2);
@@ -95,40 +93,41 @@ var s1 = function (p) {
         rebuildWorld(input.value());
     }
 
-    p.rebuildWorld = function (key) {
+    function rebuildWorld(key) {
         if (window.p3_worldKeyChanged) {
             window.p3_worldKeyChanged(key);
         }
         tile_width_step_main = window.p3_tileWidth ? window.p3_tileWidth() : 32;
         tile_height_step_main = window.p3_tileHeight ? window.p3_tileHeight() : 14.5;
-        tile_columns = Math.ceil(p.width / (tile_width_step_main * 2)); // Updated width reference
-        tile_rows = Math.ceil(p.height / (tile_height_step_main * 2)); // Updated height reference
+        tile_columns = Math.ceil(p.width / (tile_width_step_main * 2));
+        tile_rows = Math.ceil(p.height / (tile_height_step_main * 2));
     }
 
-    p.mouseClicked = function () {
+    p.mouseClicked = function() {
         let world_pos = screenToWorld(
-            [0 - mouseX, mouseY],
+            [0 - p.mouseX, p.mouseY],
             [camera_offset.x, camera_offset.y]
         );
-
+    
         if (window.p3_tileClicked) {
             window.p3_tileClicked(world_pos[0], world_pos[1]);
         }
         return false;
     }
+    
 
     p.draw = function() {
         // Keyboard controls!
-        if (keyIsDown(LEFT_ARROW)) {
+        if (p.keyIsDown(p.LEFT_ARROW)) {
             camera_velocity.x -= 1;
         }
-        if (keyIsDown(RIGHT_ARROW)) {
+        if (p.keyIsDown(p.RIGHT_ARROW)) {
             camera_velocity.x += 1;
         }
-        if (keyIsDown(DOWN_ARROW)) {
+        if (p.keyIsDown(p.DOWN_ARROW)) {
             camera_velocity.y -= 1;
         }
-        if (keyIsDown(UP_ARROW)) {
+        if (p.keyIsDown(p.UP_ARROW)) {
             camera_velocity.y += 1;
         }
 
@@ -141,12 +140,12 @@ var s1 = function (p) {
         }
 
         let world_pos = screenToWorld(
-            [0 - mouseX, mouseY],
+            [0 - p.mouseX, p.mouseY],
             [camera_offset.x, camera_offset.y]
         );
         let world_offset = cameraToWorldOffset([camera_offset.x, camera_offset.y]);
 
-        background(100);
+        p.background(100);
 
         if (window.p3_drawBefore) {
             window.p3_drawBefore();
@@ -184,7 +183,7 @@ var s1 = function (p) {
         }
     }
 
-    // Display a discription of the tile at world_x, world_y.
+    // Display a description of the tile at world_x, world_y.
     function describeMouseTile([world_x, world_y], [camera_x, camera_y]) {
         let [screen_x, screen_y] = worldToScreen(
             [world_x, world_y],
@@ -194,12 +193,12 @@ var s1 = function (p) {
     }
 
     function drawTileDescription([world_x, world_y], [screen_x, screen_y]) {
-        push();
-        translate(screen_x, screen_y);
+        p.push();
+        p.translate(screen_x, screen_y);
         if (window.p3_drawSelectedTile) {
             window.p3_drawSelectedTile(world_x, world_y, screen_x, screen_y);
         }
-        pop();
+        p.pop();
     }
 
     // Draw a tile, mostly by calling the user's drawing code.
@@ -208,12 +207,12 @@ var s1 = function (p) {
             [world_x, world_y],
             [camera_x, camera_y]
         );
-        push();
-        translate(0 - screen_x, screen_y);
+        p.push();
+        p.translate(0 - screen_x, screen_y);
         if (window.p3_drawTile) {
             window.p3_drawTile(world_x, world_y, -screen_x, screen_y);
         }
-        pop();
+        p.pop();
     }
 
     function p3_preload() { }
@@ -222,8 +221,8 @@ var s1 = function (p) {
 
     function p3_worldKeyChanged(key) {
         worldSeed = XXH.h32(key, 0);
-        noiseSeed(worldSeed);
-        randomSeed(worldSeed);
+        p.noiseSeed(worldSeed);
+        p.randomSeed(worldSeed);
     }
 
     function p3_tileWidth() {
@@ -244,70 +243,67 @@ var s1 = function (p) {
     function p3_drawBefore() { }
 
     function p3_drawTile(i, j) {
-        noStroke();
+        p.noStroke();
 
         // Calculate distance from the center of the grid
-        let distanceFromCenter = dist(i, j, width / 2, height / 2);
+        let distanceFromCenter = p.dist(i, j, p.width / 2, p.height / 2);
 
         // Map distance to a range for the vertical offset
-        let yOffsetRange = map(distanceFromCenter, 0, dist(0, 0, width / 2, height / 2), 5, 20); // Adjust the range (5, 20) as needed
+        let yOffsetRange = p.map(distanceFromCenter, 0, p.dist(0, 0, p.width / 2, p.height / 2), 5, 20); // Adjust the range (5, 20) as needed
 
         // Calculate noise value based on tile position and time
-        let noiseValue = noise(i * noiseScale, j * noiseScale, frameCount * timeScale);
+        let noiseValue = p.noise(i * noiseScale, j * noiseScale, p.frameCount * timeScale);
 
         // Map noise value to vertical offset within the range
-        let yOffset = map(noiseValue, 0, 1, -yOffsetRange, yOffsetRange);
+        let yOffset = p.map(noiseValue, 0, 1, -yOffsetRange, yOffsetRange);
 
         // Apply vertical offset to tile position
-        translate(0, yOffset);
+        p.translate(0, yOffset);
 
         if (XXH.h32("tile:" + [i, j], worldSeed) % 4 == 0) {
-            fill(81, 103, 44);
+            p.fill(81, 103, 44);
         } else {
-            fill(249, 249, 225);
+            p.fill(249, 249, 225);
         }
 
-        push();
+        p.push();
 
-        beginShape();
-        vertex(-tw, 0);
-        vertex(0, th);
-        vertex(tw, 0);
-        vertex(0, -th);
-        endShape(CLOSE);
+        p.beginShape();
+        p.vertex(-tw, 0);
+        p.vertex(0, th);
+        p.vertex(tw, 0);
+        p.vertex(0, -th);
+        p.endShape(p.CLOSE);
 
         let n = clicks[[i, j]] | 0;
         if (n % 2 == 1) {
-            fill(0, 0, 0, 32);
-            ellipse(0, 0, 10, 5);
-            translate(0, -10);
-            fill(255, 255, 100, 128);
-            ellipse(0, 0, 10, 10);
+            p.fill(0, 0, 0, 32);
+            p.ellipse(0, 0, 10, 5);
+            p.translate(0, -10);
+            p.fill(255, 255, 100, 128);
+            p.ellipse(0, 0, 10, 10);
         }
 
-        pop();
+        p.pop();
     }
 
     function p3_drawSelectedTile(i, j) {
-        noFill();
-        stroke(0, 255, 0, 128);
+        p.noFill();
+        p.stroke(0, 255, 0, 128);
 
-        beginShape();
-        vertex(-tw, 0);
-        vertex(0, th);
-        vertex(tw, 0);
-        vertex(0, -th);
-        endShape(CLOSE);
+        p.beginShape();
+        p.vertex(-tw, 0);
+        p.vertex(0, th);
+        p.vertex(tw, 0);
+        p.vertex(0, -th);
+        p.endShape(p.CLOSE);
 
-        noStroke();
-        fill(0);
-        text("tile " + [i, j], 0, 0);
+        p.noStroke();
+        p.fill(0);
+        p.text("tile " + [i, j], 0, 0);
     }
 
     function p3_drawAfter() { }
-
-
 }
 
 var myp5 = new p5(s1, 'c1');
-
