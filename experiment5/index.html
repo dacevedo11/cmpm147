@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+        <title>Experiment 5: Evolutionary Impressions</title>
+
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+        <!-- Include CSS files, including a site-wide CSS and for this particular page -->
+        <link rel="stylesheet" type="text/css" href="../css/site.css">
+        <link rel="stylesheet" type="text/css" href="css/style.css">
+    
+        <!-- Load jQuery library -->
+        <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+            integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+
+        <!-- Load p5.js library -->
+        <script src="https://cdn.jsdelivr.net/npm/p5@1.9.2/lib/p5.js"></script>
+    
+        <!-- Use me for a JavaScript OOP Project -->
+		<!-- Use me for a p5.js project -->
+		<script type="text/javascript" src="js/sketch.js" DEFER></script>
+
+
+</head>
+<body>
+	<main id="content">
+		<section>
+
+			<h1>Experiment 5: Evolutionary Impressions</h1>
+
+			<div class="minor-section results">
+				<div class="results-top">
+					<div class="image-container">
+						<p id="original"></p>
+						<p class="caption"></p>
+					</div>
+					<div class="image-container">
+						<p id="active"></p>
+						<p>Active Image</p>
+					</div>
+					<div class="image-container">
+						<p id="best"></p>
+						<p>Best Image</p>
+					</div>
+				</div>
+			
+				<div class="controls">
+					<div class="controls-col1">
+						<select id="dropper"></select>
+						<button id="restart">
+							restart
+						</button>
+						<p>
+							Mutation rate (<span id="rate"></span>%):<br /><input id="slider" type="range" min="1" max="100"
+								value="100" />
+						</p>
+					</div>
+					<div class="controls-col2">
+						<p>Active score: <span id="activeScore"></span></p>
+						<p>Exploration rate: <span id="fpsCounter"></span> fps</p>
+						<p>Best score: <span id="bestScore"></span></p>
+					</div>
+				</div>
+			
+				<div class="results-bottom">
+					<p id="memory" data-max-items="28"></p>
+				</div>
+			</div>
+
+			<div class="two-column">
+
+				<div class="minor-section">
+					<h2>Description</h2>
+					<p>The goal for this assignment is to build a generator that directly reads inspiring images, renders
+						parameterized images, and adjusts its own designs to optimize an evaluation score
+					</p>
+                </div>
+	
+				<div class="minor-section">
+					<h2>Technical</h2>
+					<p>This project takes in an image selected from the drop down menu.</p>
+				</div>
+
+			</div>
+
+			<div class="minor-section">
+				<h2>Reflection</h2>
+				<p><!-- Insert text here--></p>
+			</div>
+
+		</section>
+		<nav id="links" class="minor-section">
+            <a href="../index.html">Go Back To Home</a>
+		</nav>
+	</main>
+</body>
+</html>
