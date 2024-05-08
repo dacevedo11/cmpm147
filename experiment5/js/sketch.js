@@ -1,10 +1,3 @@
-// sketch.js - purpose and description here
-// Author: Daniel Acevedo
-// Date: May 05, 2024 
-
-/* exported preload, setup, draw */
-/* global memory, dropper, restart, rate, slider, activeScore, bestScore, fpsCounter */
-
 let bestDesign;
 let currentDesign;
 let currentScore;
@@ -18,7 +11,7 @@ function preload() {
 
     for (let i = 0; i < allInspirations.length; i++) {
         let insp = allInspirations[i];
-        insp.image = loadImage(insp.assetUrl);
+        insp.image = loadImage(insp.url);
         let option = document.createElement("option");
         option.value = i;
         option.innerHTML = insp.name;

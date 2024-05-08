@@ -1,49 +1,55 @@
+// my_design.js
+// Author: Daniel Acevedo
+// Date: May 05, 2024 
+
 function getInspirations() {
     return [
         {
-            name: "Surfer",
-            url: "../img/surfer.jpg",
+            name: "Albert Einstein",
+            url: "https://cdn.glitch.global/212ba632-5883-4339-a059-a49b0c2c0c6b/einstein.jpg?v=1715140272091"
         },
         {
-            name: "Bridge",
-            url: "../img/bridge.jpg",
+            name: "V-J Day in Times Square",
+            url: "https://cdn.glitch.global/212ba632-5883-4339-a059-a49b0c2c0c6b/kiss.jpg?v=1715140275138",
         },
         {
-            name: "Rollercoaster",
-            url: "../img/rollercoaster.jpg"
+            name: "Raising the Flag on Iwo Jima",
+            url: "https://cdn.glitch.global/212ba632-5883-4339-a059-a49b0c2c0c6b/iwo-jima.jpg?v=1715140269314",
         }
     ];
 }
 
 function initDesign(inspiration) {
+    // set the canvas size based on the aspect ratio of the image
     let canvasContainer = $('.image-container');
     let canvasWidth = canvasContainer.width();
     let aspectRatio = inspiration.image.height / inspiration.image.width;
     let canvasHeight = canvasWidth * aspectRatio;
-    resizeCanvas(canvasWidth, canvasHeight);
-    const imgHTML = `<img src="${inspiration.url}" style="width:${canvasWidth}px;">`
-    $('original').empty();
-    $('original').append(imgHTML);
+    resizeCanvas(canvasWidth * 0.75, canvasHeight * 0.75);
+
+    // add the original image to #original
+    const imgHTML = `<img src="${inspiration.url}" style="width:${canvasWidth * 0.75}px;">`
+    $('#original').empty();
+    $('#original').append(imgHTML);
 
     let design = {
         bg: 128,
         fg: []
     }
 
-    for (let i = 0; i < 100; i++) {
+    for (let i = 0; i < 500; i++) {
         design.fg.push({
             x: random(width),
             y: random(height),
-            w: random(width / 2),
-            h: random(height / 2),
+            w: random(width / 3),
+            h: random(height / 3),
             fill: random(255)
-        })
+        });
     }
     return design;
 }
 
 function renderDesign(design, inspiration) {
-
     background(design.bg);
     noStroke();
     for (let box of design.fg) {
