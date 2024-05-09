@@ -5,19 +5,20 @@
 function main() {
 
   const fillers = {
-    hairstyle: ["Bald", "Crew cut", "Side part", "Receding hairline", "Dr. Phil", "Flat top"],
-    top: ["Hawaiian shirt", "Striped polo shirt", "Tye Dye shirt", "American flag tshirt", "Metallica shirt", "Work jacket", "White tshirt"],
-    bottom: ["Cargo shorts", "Jean shorts", "Gray sweatpants", "Blue jeans", "Khakis", "Basketball shorts", "Cargo pants"],
-    accessory: ["Fanny pack", "Baseball cap", "Bucket hat", "Oakley sunglasses", "Suspenders", "Apron"],
-    footwear: ["White New Balances", "Merrells", "Nike Air Monarchs", "Crocs", "Socks & Sandals", "Boots"],
+    animal: ["FOX", "CAT", "TOAD", "SPIDER", "OWL", "HARE", "MAGPIE", "CROW", "DOG", "RAT"],
+    spell: ["UNSEEN HAND", "CONJURE LIGHT", "SPEAK HUMAN", "LOCK/UNLOCK, OPEN/CLOSE", "CONJURE DINNER", "MAKE FLAME", "TIDY, CLEAN AND MEND", "PLANT GROWTH", "DISTRACT/CONFUSE", "MAKE BOOK READ ITSELF ALOUD"],
+    village: ["UNDER THE THUMB OF THE BARON", "FILLED WITH CHERRY GHOMES", "CONTROLLED BY A CREEPY CULT", "DEVOUTLY RELIGIOUS", "INCREDIBLY SUPERSTITIOUS", "AT WAR WITH THE FOREST TRIBES", "BUILT AROUND THE WIZARD COLLEGE", "FULL OF HARDY MINING FOLK", "SHADY AND DANGEROUS", "OPPRESIVELY PERFECT"],
+    witchhunter: ["ARMOURED AND TOUGH", "WIZENED AND WISE", "DRUNK AND VIOLENT", "PIOUS AND AGGRESSIVE", "GUARDED AND COWARDLY", "MAGICAL AND JEALOUS", "CLEVER AND CRUEL", "DUPLICITOUS AND HIDDEN", "JOLLY AND WELL-MEANING", "HEADSTRONG AND WILD"],
+    twist: ["THE VILLAGE IS IN ON IT", "A RIVAL WITCH SET THEM UP", "THE WITCH-HUNTER DIDN'T DO IT", "THE WITCH-HUNTER IS WAITING FOR YOU", "THE VILLAGE FOLK ARE HAVING A FESTIVAL", "THE WITCH-HUNTER DIED AND IS BEING BURIED", "THERE ARE TWO RIVAL WITCH-HUNTERS IN TOWN", "THE VILLAGE IS ABANDONED", "THE WITCH-HUNTER HAS DRAGGED A SUSPECT UP FOR INTERROGATION", "THE VILLAGE HATES THEM"]
   };
 
-  const template = ` <br>
-  Hairstyle: $hairstyle <br> <br>
-  Top: $top <br> <br>
-  Bottom: $bottom <br> <br>
-  Accessory: $accessory <br> <br>
-  Footwear: $footwear`;
+
+
+  const template = `You are a cute woodland animal: $animal
+  Your witch taught you a spell: $spell
+  The village is: $village
+  The witch-hunter is: $witchhunter
+  But here's the twist: $twist`;
 
 
   // STUDENTS: You don't need to edit code below this line.
