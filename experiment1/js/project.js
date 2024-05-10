@@ -14,11 +14,8 @@ function main() {
 
 
 
-  const template = `You are a cute woodland animal: $animal
-  Your witch taught you a spell: $spell
-  The village is: $village
-  The witch-hunter is: $witchhunter
-  But here's the twist: $twist`;
+  const template = `You are a cute $animal. Your witch taught you $spell. The village is $village. 
+  The witch-hunter is: $witchhunter. But here's the twist: $twist`;
 
 
   // STUDENTS: You don't need to edit code below this line.

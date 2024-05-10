@@ -54,3 +54,7 @@ h1, h2 {
     text-decoration: underline;
     text-decoration-color: red;
 }
+
+#clicker {
+    margin-bottom: 1em;
+  }
