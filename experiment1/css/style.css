@@ -11,18 +11,18 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #2b2d42;
+    background-color: #824D74;
     font-family: monospace;
 }
 
 #content{
-    background-color: #8d99ae;
-    border: 1px solid black;
+    background-color: #BE7B72;
+    border: 2px solid black;
 }
 
 .minor-section{
-    border: 1px solid black;
-    background-color: #edf2f4;
+    border: 2px solid black;
+    background-color: #FDAF7B;
 }
 
 h1, h2 {
@@ -37,17 +37,19 @@ h1, h2 {
 }
 
 .glitch-output {
-    width: 500px;
+    width: 600px;
     border: thin solid gray;
     padding: 1em;
     margin: 1em;
     box-shadow: 2px 2px 5px gray;
-    background: #ffe;
+    background: #f7ccb0;
     border: solid 1px black;
+    font-size: large;
 }
 
-#project-section p{
-    font-size: large;
+#story {
+    margin: 1em;
+    font-size: 1.4em;
 }
 
 #project-section strong{
@@ -57,4 +59,4 @@ h1, h2 {
 
 #clicker {
     margin-bottom: 1em;
-  }
+}
